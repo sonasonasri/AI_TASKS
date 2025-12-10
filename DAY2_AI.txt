@@ -1,0 +1,32 @@
+POLYNOMIAL EQUATION IN LINEAR REGRESSION PROBLEM
+
+from sklearn.linear_model import LinearRegression
+from sklearn.preprocessing import PolynomialFeatures
+import numpy as np
+# sample data
+X = np.array([1, 2, 3, 4, 5]).reshape(-1, 1)
+y = np.array([2, 5, 10, 17, 26])
+# polynomial features of degree 2
+poly = PolynomialFeatures(degree=2)
+X_poly = poly.fit_transform(X)
+# model
+model = LinearRegression()
+model.fit(X_poly, y)
+print("Coefficients:", model.coef_)
+print("Intercept:", model.intercept_)
+
+Models curved relationships between x and y.
+Equation: y=b0+b1x+b2x2+...+bnxn.
+Still called linear regression (linear in coefficients).
+Captures non-linear trends.
+Useful for U-shape, S-shape, or curved data.
+Adds powers of features (𝑥2,𝑥3x2,x3, etc.).
+Gives better fit than straight-line regression.
+Degree too low → underfitting.
+Degree too high → overfitting.
+Examples: house price vs size, plant growth, speed vs distance.
+Graph: straight line → linear, curve → polynomial.
+Uses least squares to minimize error.
+Coefficients show contribution of each power.
+Easy to implement in Python with sklearn.
+Key idea: simple way to fit non-linear data without complex models.
